@@ -18,7 +18,8 @@
   "homepage": "https://github.com/Dreezy305/graph-ql-back-end#readme",
   "dependencies": {
     "express": "^4.18.1",
-    "express-graphql": "^0.12.0"
+    "express-graphql": "^0.12.0",
+    "graphql": "^16.5.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.19"
