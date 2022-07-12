@@ -1,0 +1,26 @@
+{
+  "name": "graph-back-end",
+  "version": "1.0.0",
+  "description": "graph ql and express application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Dreezy305/graph-ql-back-end.git"
+  },
+  "author": "idris",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dreezy305/graph-ql-back-end/issues"
+  },
+  "homepage": "https://github.com/Dreezy305/graph-ql-back-end#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "express-graphql": "^0.12.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
