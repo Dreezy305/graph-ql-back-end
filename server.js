@@ -1,6 +1,9 @@
 const express = require("express");
+const cors = require("cors");
 
 const app = express();
+
+app.use(cors());
 
 const expressGraphQL = require("express-graphql").graphqlHTTP;
 
@@ -20,14 +23,78 @@ const authors = [
 ];
 
 const books = [
-  { id: 1, name: "Harry Potter and the Chamber of Secrets", authorId: 1 },
-  { id: 2, name: "Harry Potter and the Prisoner of Azkaban", authorId: 1 },
-  { id: 3, name: "Harry Potter and the Goblet of Fire", authorId: 1 },
-  { id: 4, name: "The Fellowship of the Ring", authorId: 2 },
-  { id: 5, name: "The Two Towers", authorId: 2 },
-  { id: 6, name: "The Return of the King", authorId: 2 },
-  { id: 7, name: "The Way of Shadows", authorId: 3 },
-  { id: 8, name: "Beyond the Shadows", authorId: 3 },
+  {
+    id: 1,
+    name: "Harry Potter and the Chamber of Secrets",
+    authorId: 1,
+    releaseDate: "02/20/1989",
+    priority: "Low",
+    authorName: "J. K. Rowling",
+    type: "Horror",
+  },
+  {
+    id: 2,
+    name: "Harry Potter and the Prisoner of Azkaban",
+    authorId: 1,
+    releaseDate: "02/20/1989",
+    priority: "Medium",
+    authorName: "J. K. Rowling",
+    type: "Horror",
+  },
+  {
+    id: 3,
+    name: "Harry Potter and the Goblet of Fire",
+    authorId: 1,
+    releaseDate: "02/20/1989",
+    priority: "High",
+    authorName: "J. K. Rowling",
+    type: "Horror",
+  },
+  {
+    id: 4,
+    name: "The Fellowship of the Ring",
+    authorId: 2,
+    releaseDate: "02/20/1989",
+    priority: "Low",
+    authorName: "J. K. Rowling",
+    type: "Horror",
+  },
+  {
+    id: 5,
+    name: "The Two Towers",
+    authorId: 2,
+    releaseDate: "02/20/1989",
+    priority: "High",
+    authorName: "J. K. Rowling",
+    type: "Horror",
+  },
+  {
+    id: 6,
+    name: "The Return of the King",
+    authorId: 2,
+    releaseDate: "02/20/1989",
+    priority: "Medium",
+    authorName: "J. K. Rowling",
+    type: "Horror",
+  },
+  {
+    id: 7,
+    name: "The Way of Shadows",
+    authorId: 3,
+    releaseDate: "02/20/1989",
+    priority: "Low",
+    authorName: "J. K. Rowling",
+    type: "Horror",
+  },
+  {
+    id: 8,
+    name: "Beyond the Shadows",
+    authorId: 3,
+    releaseDate: "02/20/1989",
+    priority: "Medium",
+    authorName: "J. K. Rowling",
+    type: "Horror",
+  },
 ];
 
 const AuthorType = new GraphQLObjectType({
@@ -52,6 +119,10 @@ const BookType = new GraphQLObjectType({
     id: { type: new GraphQLNonNull(GraphQLInt) },
     name: { type: new GraphQLNonNull(GraphQLString) },
     authorId: { type: new GraphQLNonNull(GraphQLInt) },
+    releaseDate: { type: new GraphQLNonNull(GraphQLString) },
+    priority: { type: new GraphQLNonNull(GraphQLString) },
+    authorName: { type: new GraphQLNonNull(GraphQLString) },
+    type: { type: new GraphQLNonNull(GraphQLString) },
     author: {
       type: AuthorType,
       resolve: (books) => {
@@ -121,7 +192,6 @@ const RootMutationType = new GraphQLObjectType({
       description: "Add author",
       args: {
         name: { type: new GraphQLNonNull(GraphQLString) },
-        authorId: { type: new GraphQLNonNull(GraphQLInt) },
       },
       resolve: (parent, args) => {
         const author = {
